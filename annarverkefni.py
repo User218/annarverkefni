@@ -1,6 +1,7 @@
 from bottle import run, route, run, error, static_file, template, response
 import requests
 import json
+import os
 
 response = requests.get('http://apis.is/concerts')
 data = response.json()
@@ -30,4 +31,4 @@ def error404(error):
 def error500(error):
     return '<h1>Error 500. Villa á miðlara</h1>'
 
-run()
+run(host='0.0.0.0', port=os.environ.get('PORT'))
